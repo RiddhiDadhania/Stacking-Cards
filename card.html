@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .multi-card {
+            width: auto !important;
+            margin: 10px 10px 10px 10px !important;
+        }
+
+        #cards {
+            list-style: none;
+            padding-left: 0;
+            position: relative;
+        }
+
+        .card {
+            height: 100vh;
+            position: sticky;
+            border-radius: 13px !important;
+            overflow: hidden;
+        }
+
+        #cards li:nth-last-child(5) {
+            z-index: 9;
+            bottom: 188px;
+            /* padding-top: 0px; */
+            height: calc(100vh - 192px);
+        }
+
+        #cards li:nth-last-child(4) {
+            z-index: 8;
+            bottom: 143px;
+            /* padding-top: 0px; */
+            height: calc(100vh - 148px);
+        }
+
+        #cards li:nth-last-child(3) {
+            z-index: 7;
+            bottom: 97px;
+            /* padding-top: 0px; */
+            height: calc(100vh - 106px);
+        }
+
+        #cards li:nth-last-child(2) {
+            z-index: 6;
+            bottom: 52px;
+            /* padding-top: 0px; */
+            height: calc(100vh - 64px);
+        }
+
+        #cards li:nth-last-child(1) {
+            z-index: 5 !important;
+            /* padding-top: 0px; */
+            bottom: 12px;
+            height: calc(100vh - 60px);
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            bottom: 85px;
+            z-index: 10;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: fit-content;
+        }
+
+        button {
+           outline: 0;
+           border: 0;
+           border-radius: 100%;
+           height: 35px;
+           width: 35px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="multi-card">
+        <div class="container">
+            <ul id="cards">
+                <li id="card_1" class="card" style="background-color: pink;">
+                </li>
+                <li id="card_2" class="card" style="background-color: rgb(108, 108, 185);">
+                </li>
+                <li id="card_3" class="card" style="background-color: gray;">
+                </li>
+                <li id="card_4" class="card" style="background-color: rgb(109, 80, 109);">
+                </li>
+                <li id="card_5" class="card" style="background-color: rgb(187, 114, 62);">
+                </li>
+            </ul>
+            <div class="scroll-arrow">
+                <button>⭣</button>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        $("button").click(function () {
+            $('html, body').animate({
+                scrollTop: ($(this).offset().top)/1.1
+            }, 1000, function () {
+                $('button').fadeOut();
+            });
+        });
+
+        jQuery(document).scroll(function () {
+            var y = $(this).scrollTop();
+            if (y < 300) {
+                $('button').fadeIn();
+            } else {
+                $('button').fadeOut();
+            }
+        });
+
+    </script>
+</body>
+
+</html>
